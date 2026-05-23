@@ -104,6 +104,10 @@ pip_packages: []
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
 
+pipx_packages: []
+# - name: ntfy
+#   state: present # present/absent/latest, default: present
+
 # Set to 'true' to configure Sublime Text.
 configure_sublime: false
 sublime_base_path: "~/Library/Application Support/Sublime Text"
