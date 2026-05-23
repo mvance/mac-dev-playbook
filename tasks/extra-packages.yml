@@ -33,36 +33,23 @@
     executable: "{{ item.executable | default(omit) }}"
   loop: "{{ gem_packages }}"
 
-- name: Ensure pipx is installed.
-  community.general.homebrew:
-    name: pipx
-    state: present
-  when: pipx_packages | length > 0
-
 - name: Ensure pipx application directory is on PATH.
   ansible.builtin.command:
     argv:
       - "{{ pipx_executable }}"
       - ensurepath
-  changed_when: false
+  register: pipx_ensurepath_result
+  changed_when: "'already in PATH' not in pipx_ensurepath_result.stdout"
   when:
     - pipx_packages | length > 0
     - pipx_ensurepath
 
 - name: Install global Python applications via pipx.
-  community.general.pipx:
+  pipx:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
     executable: "{{ item.executable | default(pipx_executable) }}"
   loop: "{{ pipx_packages }}"
-  when: pipx_packages | length > 0
-  environment: >-
-    {{
-      ((item.state | default('present')) in pipx_removal_states)
-      | ternary({}, {'PIPX_DEFAULT_BACKEND': (item.backend | default(pipx_default_backend))})
-    }}
-  vars:
-    pipx_removal_states:
-      - absent
-      - uninstall
-      - uninstall_all
+  environment:
+    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend) }}"
+  when: (item.state | default('present')) != 'absent'
