@@ -78,6 +78,10 @@ npm_packages:
 pip_packages:
   - name: mkdocs
 
+pipx_packages:
+  - name: ntfy
+    backend: pip
+
 configure_dock: true
 dockitems_remove:
   - Launchpad

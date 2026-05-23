@@ -13,3 +13,6 @@ homebrew_installed_packages:
 homebrew_cask_apps:
   - firefox
   - licecap
+
+pipx_packages:
+  - name: pycowsay
