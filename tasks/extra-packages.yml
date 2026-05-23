@@ -43,5 +43,8 @@
   community.general.pipx:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
+    executable: "{{ item.executable | default('pipx') }}"
   loop: "{{ pipx_packages }}"
   when: pipx_packages | length > 0
+  environment:
+    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend) }}"
