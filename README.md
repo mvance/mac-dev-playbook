@@ -82,6 +82,11 @@ pipx_packages:
   - name: ntfy
     backend: pip
 
+# pipx support requires community.general >= 3.8.0. The `latest` state
+# requires community.general >= 5.5.0. Set `pipx_ensurepath: false` to skip
+# running `pipx ensurepath`; use `backend: uv` only with a pipx version that
+# supports `PIPX_DEFAULT_BACKEND=uv`.
+
 configure_dock: true
 dockitems_remove:
   - Launchpad

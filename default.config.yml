@@ -104,11 +104,13 @@ pip_packages: []
 #   state: present # present/absent/latest, default: present
 #   version: "0.16.3" # default: N/A
 
+pipx_executable: pipx
 pipx_default_backend: pip
+pipx_ensurepath: true
 pipx_packages: []
 # - name: ntfy
 #   state: present # present/absent/latest, default: present
-#   executable: pipx # default: pipx
+#   executable: pipx # path/name of pipx binary, default: pipx_executable
 #   backend: pip # pip/uv, default: pipx_default_backend
 
 # Set to 'true' to configure Sublime Text.
