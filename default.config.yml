@@ -107,10 +107,10 @@ pip_packages: []
 
 pipx_executable: pipx
 pipx_default_backend: pip
-pipx_ensurepath: true
+pipx_ensurepath: false
 pipx_packages: []
 # - name: ntfy
-#   state: present # present/absent/upgrade, default: present
+#   state: present # present/absent/latest, default: present
 #   executable: pipx # path/name of pipx binary, default: pipx_executable
 #   backend: pip # pip/uv, default: pipx_default_backend
 

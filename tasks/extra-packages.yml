@@ -50,4 +50,5 @@
     state: "{{ item.state | default('present') }}"
     executable: "{{ item.executable | default(pipx_executable) }}"
   loop: "{{ pipx_packages }}"
-  environment: "{{ {'PIPX_DEFAULT_BACKEND': item.backend | default(pipx_default_backend)} if (item.state | default('present')) != 'absent' else {} }}"
+  environment:
+    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend) }}"
