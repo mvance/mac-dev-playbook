@@ -52,6 +52,7 @@ homebrew_installed_packages:
   - node
   - nvm
   - php
+  - pipx
   - pngpaste
   - ssh-copy-id
   - readline
