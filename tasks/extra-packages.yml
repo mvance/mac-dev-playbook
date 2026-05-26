@@ -45,8 +45,8 @@
 
 - name: Install global Python applications via pipx.
   community.general.pipx:
-    name: "{{ item.name if item is mapping else item }}"
-    state: "{{ item.state if item is mapping else 'present' }}"
-    executable: "{{ item.executable if item is mapping else pipx_executable }}"
+    name: "{{ item.name | default(item) if item is mapping else item }}"
+    state: "{{ item.state | default('present') if item is mapping else 'present' }}"
+    executable: "{{ item.executable | default(pipx_executable) if item is mapping else pipx_executable }}"
   loop: "{{ pipx_packages | default([]) }}"
-  environment: "{{ {} if (item.state if item is mapping else 'present') == 'absent' else {'PIPX_DEFAULT_BACKEND': item.backend if item is mapping else pipx_default_backend} }}"
+  environment: "{{ {} if (item.state | default('present') if item is mapping else 'present') == 'absent' else {'PIPX_DEFAULT_BACKEND': item.backend | default(pipx_default_backend) if item is mapping else pipx_default_backend} }}"
