@@ -83,7 +83,7 @@ pipx_packages:
     backend: pip
 
 # pipx support requires community.general >= 3.8.0. The `latest` state
-# requires community.general >= 6.6.0. Set `pipx_ensurepath: true` to run
+# requires community.general >= 5.5.0. Set `pipx_ensurepath: true` to run
 # `pipx ensurepath` and ensure pipx-installed apps are on PATH; use
 # `backend: uv` only with pipx >= 1.4.0.
 
