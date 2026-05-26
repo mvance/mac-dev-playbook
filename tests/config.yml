@@ -6,6 +6,7 @@ homebrew_installed_packages:
   - sqlite
   - ssh-copy-id
   - readline
+  - pipx
   - pv
   - wget
   - wrk
