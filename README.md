@@ -84,7 +84,7 @@ pipx_packages:
 
 # pipx support requires community.general >= 5.5.0. Set `pipx_ensurepath: true` to run
 # `pipx ensurepath` and ensure pipx-installed apps are on PATH; use
-# `backend: uv` only with pipx >= 1.4.0.
+# `backend: uv` only with pipx >= 1.12.0.
 
 configure_dock: true
 dockitems_remove:

@@ -38,10 +38,9 @@
     argv:
       - "{{ pipx_executable }}"
       - ensurepath
-  changed_when: false
-  when:
-    - pipx_packages | default([], true) | length > 0
-    - pipx_ensurepath
+  register: pipx_ensurepath_result
+  changed_when: "'Success' in pipx_ensurepath_result.stdout"
+  when: pipx_ensurepath
 
 - name: Install global Python applications via pipx.
   community.general.pipx:
