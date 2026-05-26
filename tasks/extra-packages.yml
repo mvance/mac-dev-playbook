@@ -40,14 +40,14 @@
       - ensurepath
   changed_when: false
   when:
-    - pipx_packages | default([]) | length > 0
+    - pipx_packages | default([], true) | length > 0
     - pipx_ensurepath
 
 - name: Install global Python applications via pipx.
   community.general.pipx:
     name: "{{ item.name if item is mapping else item }}"
-    state: "{{ item.state | default('present') if item is mapping else 'present' }}"
-    executable: "{{ item.executable | default(pipx_executable) if item is mapping else pipx_executable }}"
-  loop: "{{ pipx_packages | default([]) }}"
+    state: "{{ item.state | default('present', true) if item is mapping else 'present' }}"
+    executable: "{{ item.executable | default(pipx_executable, true) if item is mapping else pipx_executable }}"
+  loop: "{{ pipx_packages | default([], true) }}"
   environment:
-    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend) if item is mapping else pipx_default_backend }}"
+    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend, true) if item is mapping else pipx_default_backend }}"
