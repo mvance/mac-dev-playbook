@@ -50,13 +50,5 @@
     state: "{{ item.state | default('present') }}"
     executable: "{{ item.executable | default(pipx_executable) }}"
   loop: "{{ pipx_packages }}"
-  environment: >-
-    {{
-      ((item.state | default('present')) in pipx_removal_states)
-      | ternary({}, {'PIPX_DEFAULT_BACKEND': (item.backend | default(pipx_default_backend))})
-    }}
-  vars:
-    pipx_removal_states:
-      - absent
-      - uninstall
-      - uninstall_all
+  environment:
+    PIPX_DEFAULT_BACKEND: "{{ item.backend | default(pipx_default_backend) }}"
