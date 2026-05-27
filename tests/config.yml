@@ -15,5 +15,8 @@ homebrew_cask_apps:
   - firefox
   - licecap
 
+pipx_ensurepath: true
+
 pipx_packages:
   - name: pycowsay
+  - cowsay
