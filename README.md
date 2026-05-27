@@ -135,6 +135,7 @@ Packages (installed with Homebrew):
   - node
   - nvm
   - php
+  - pipx
   - ssh-copy-id
   - readline
   - openssl
