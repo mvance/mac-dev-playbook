@@ -39,7 +39,7 @@
       - "{{ pipx_executable }}"
       - ensurepath
   register: pipx_ensurepath_result
-  changed_when: "'Success' in pipx_ensurepath_result.stdout"  # pipx prints 'Success!' only when PATH is actually modified
+  changed_when: "'Success' in pipx_ensurepath_result.stdout"  # pipx outputs 'Success! ...' when PATH is modified; substring match covers the full message
   when: pipx_ensurepath
 
 - name: Install global Python applications via pipx.
